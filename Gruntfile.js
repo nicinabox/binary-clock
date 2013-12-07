@@ -280,6 +280,20 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+        buildcontrol: {
+            options: {
+                dir: 'dist',
+                commit: true,
+                push: true,
+                message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+            },
+            pages: {
+                options: {
+                    remote: 'git@github.com:nicinabox/binary-clock.git',
+                    branch: 'gh-pages'
+                }
+            }
         }
     });
 
