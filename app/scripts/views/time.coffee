@@ -7,13 +7,13 @@ class bcdClock.Views.TimeView extends Backbone.View
         super
         @model ||= new bcdClock.Models.TimeModel
         setInterval @model.currentTime, 1000
-        @listenTo @model, 'change', @update
+        @listenTo @model, 'change', @updateActive
 
     render: ->
         @$el.html @template( @model.attributes )
         @el
 
-    update: =>
+    updateActive: =>
         parts   = @model.attributes.parts
         $blocks = @$('.block')
         @$('.active').removeClass('active')

@@ -1,7 +1,7 @@
 'use strict';
 
 class bcdClock.Models.TimeModel extends Backbone.Model
-    defauts:
+    defaults:
         padding: 4
         time_of_day: ''
         time: ''
@@ -22,8 +22,8 @@ class bcdClock.Models.TimeModel extends Backbone.Model
     now: ->
         moment().format('HH:mm:ss')
 
-    padDigit: (digits) ->
-        String("000000" + (+digits)).slice(-@get('padding'))
+    padDigit: (digit) ->
+        String("000000" + (+digit)).slice(-@get('padding'))
 
     toBinary: (number) ->
         _.map number.split(//), (i) =>
