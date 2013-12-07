@@ -1,0 +1,13 @@
+{{#each time}}
+    <div class="block">
+        <ul>
+            {{#each this}}
+                <li>
+                    {{#each this}}
+                        <span class="{{active this}}"></span>
+                    {{/each}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+{{/each}}
