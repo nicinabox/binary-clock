@@ -341,6 +341,8 @@ module.exports = function (grunt) {
         'watch:test'
     ]);
 
+    grunt.registerTask('deploy', ['build', 'buildcontrol:pages']);
+
     grunt.registerTask('build', [
         'clean:dist',
         'coffee',
