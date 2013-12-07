@@ -5,8 +5,14 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 $brand-primary: #5EBE8F;
 
+$morning: $brand-primary;
+$afternoon: #FEBF0F;
+$evening: #E51837;
+$night: #5B5B95;
+
 body {
     background: black;
+    -webkit-font-smoothing: antialiased;
 }
 
 #root {
@@ -16,6 +22,58 @@ body {
 .layout {
     @include clearfix;
     height: 100%;
+}
+
+#standard-time {
+    font-size: 36px;
+    font-weight: 300;
+    padding: 20px;
+    color: #fff;
+    @include opacity(0.4);
+    text-shadow: 0 1px 1px #000;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+}
+
+span {
+    width: 100%;
+    height: 25%;
+    display: block;
+    @include transition(background 500ms ease-out,
+                        box-shadow 500ms ease-out,
+                        -webkit-transform 500ms ease-out);
+    @include scale(1);
+    @include border-radius(50%);
+    &.active {
+        @include scale(0.8);
+    }
+}
+.midnight, .night {
+    span.active {
+        background: $night;
+        @include box-shadow(0 0 10px 2px $night);
+    }
+}
+.morning {
+    span.active {
+        background: $morning;
+        @include box-shadow(0 0 10px 2px $morning);
+    }
+}
+.afternoon {
+    span.active {
+        background: $afternoon;
+        @include box-shadow(0 0 10px 2px $afternoon);
+    }
+}
+.evening {
+    span.active {
+        background: $evening;
+        @include box-shadow(0 0 10px 2px $evening);
+    }
 }
 
 .block {
@@ -32,30 +90,20 @@ body {
             float: left;
             width: 50%;
             height: 100%;
-        }
-    }
-    span {
-        width: 100%;
-        height: 25%;
-        display: block;
-        border-right: 1px solid #222;
-        border-bottom: 1px solid #222;
-        @include transition(background 200ms ease-out);
-        &.active {
-            background: $brand-primary;
+            border-right: 1px solid #222;
         }
     }
     @for $i from 1 through 3 {
         &:nth-child(#{$i}) {
             span.active {
-                background: darken($brand-primary, $i * 5%);
+                @include opacity( 0.65 + ($i * 0.1 ) );
             }
         }
     }
     &:last-child {
         li:last-child {
+            border-right: 0;
             span {
-                border-right: 0;
             }
         }
     }

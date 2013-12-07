@@ -3,13 +3,17 @@
 class bcdClock.Models.TimeModel extends Backbone.Model
     padding: 4
     defauts:
-        time: []
+        time: ''
+        parts: []
 
     initialize: ->
        @currentTime()
 
     currentTime: =>
-        @set 'time', _.map @now().split(':'), (time_part) =>
+        now = @now()
+
+        @set 'time', now, silent: true
+        @set 'parts', _.map now.split(':'), (time_part) =>
             _.map @toBinary(time_part), (digits) ->
                 digits.split('')
 

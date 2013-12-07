@@ -8,15 +8,15 @@ class bcdClock.Views.DotsView extends Backbone.View
     initialize: ->
         @model = new bcdClock.Models.TimeModel
         setInterval @model.currentTime, 1000
+
         @listenTo @model, 'change', @update
 
     render: ->
         @$el.html @template( @model.attributes )
-        # setTimeout @update, 1000
         @el
 
     update: =>
-        attrs   = @model.attributes.time
+        attrs   = @model.attributes.parts
         $blocks = @$('.block')
         @$('.active').removeClass('active')
 
