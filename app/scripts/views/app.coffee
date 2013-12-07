@@ -13,7 +13,8 @@ class bcdClock.Views.AppView extends Backbone.View
         @setHeight()
         $(window).resize @setHeight
 
-        @listenTo @dotsView.model, 'change', @setTimeOfDay
+        @setColorForTime()
+        @listenTo @dotsView.model, 'change:time_of_day', @setColorForTime
 
     render: ->
         @$el.append @standardTimeView.render()
@@ -22,22 +23,8 @@ class bcdClock.Views.AppView extends Backbone.View
     setHeight: =>
         @$el.height ($(window).width() * @viewingRatio)
 
-    setTimeOfDay: ->
-        hour = +moment().format('HH')
-
-        if hour < 5
-            className = 'midnight'
-        else if hour < 12
-            className = 'morning'
-        else if hour < 16
-            className = 'afternoon'
-        else if hour < 20
-            className = 'evening'
-        else if hour < 23
-            className = 'night'
-        else
-            className = 'midnight'
-
+    setColorForTime: ->
+        className = @dotsView.model.get('time_of_day')
         unless $('body').hasClass(className)
             $('body').attr('class', '')
                      .addClass(className)
