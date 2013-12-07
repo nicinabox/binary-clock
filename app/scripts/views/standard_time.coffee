@@ -2,7 +2,7 @@
 
 class bcdClock.Views.StandardTimeView extends Backbone.View
     template: JST['app/scripts/templates/standard_time.hbs']
-    id: 'standard-time'
+    el: '#standard-time'
 
     initialize: ->
         @listenTo @model, 'change', @render

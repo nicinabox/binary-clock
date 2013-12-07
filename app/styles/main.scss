@@ -17,4 +17,27 @@ body {
     padding-top: 20px;
     height: 100vh;
 }
+#footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    margin-bottom: 10px;
+    bottom: 0;
+    z-index: 1;
+}
+
+#position {
+    text-align: center;
+    a {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #fff;
+        @include border-radius(100%);
+        @include opacity(0.4);
+        &.active {
+            background: #fff;
+        }
+    }
+}
 

@@ -1,15 +1,8 @@
 #standard-time {
     font-size: 36px;
     font-weight: 300;
-    padding: 20px;
     color: #fff;
-    @include opacity(0.4);
-    text-shadow: 0 1px 1px #000;
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    z-index: 1;
+    @include opacity(0.6);
 }
 
 .layout {

@@ -6,7 +6,7 @@
     }
     span {
         height: 25%;
-        @include border-radius(50%);
+        @include border-radius(100%);
         @include scale(1);
         &.active {
             @include scale(0.8);
