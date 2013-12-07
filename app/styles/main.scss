@@ -1,14 +1,10 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'compass';
+@import 'variables';
 @import 'sass-bootstrap/lib/bootstrap';
-
-$brand-primary: #5EBE8F;
-
-$morning: $brand-primary; // green
-$afternoon: #FEBF0F; // yellow
-$evening: #E51837; // red
-$night: #5B5B95; // purple
+@import 'swipe';
+@import 'time';
 
 body {
     background: black;
@@ -16,113 +12,7 @@ body {
 }
 
 #root {
+    padding-top: 20px;
     height: 100vh;
 }
 
-.swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
-  height: 100%;
-}
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-}
-.swipe-wrap > div {
-  height: 100%;
-  float:left;
-  width:100%;
-  position: relative;
-}
-
-.layout {
-    @include clearfix;
-    height: 100%;
-}
-
-#standard-time {
-    font-size: 36px;
-    font-weight: 300;
-    padding: 20px;
-    color: #fff;
-    @include opacity(0.4);
-    text-shadow: 0 1px 1px #000;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-}
-
-span {
-    width: 100%;
-    height: 25%;
-    display: block;
-    @include transition(background 500ms ease-out,
-                        box-shadow 500ms ease-out,
-                        -webkit-transform 300ms ease-in);
-    @include scale(1);
-    @include border-radius(50%);
-    &.active {
-        @include scale(0.8);
-    }
-}
-.midnight, .night {
-    span.active {
-        background: $night;
-        @include box-shadow(0 0 10px 2px $night);
-    }
-}
-.morning {
-    span.active {
-        background: $morning;
-        @include box-shadow(0 0 10px 2px $morning);
-    }
-}
-.afternoon {
-    span.active {
-        background: $afternoon;
-        @include box-shadow(0 0 10px 2px $afternoon);
-    }
-}
-.evening {
-    span.active {
-        background: $evening;
-        @include box-shadow(0 0 10px 2px $evening);
-    }
-}
-
-.block {
-    float: left;
-    width: 33.333%;
-    height: 100%;
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        height: 100%;
-        @include clearfix;
-        li {
-            float: left;
-            width: 50%;
-            height: 100%;
-            border-right: 1px solid #222;
-        }
-    }
-    @for $i from 1 through 3 {
-        &:nth-child(#{$i}) {
-            span.active {
-                @include opacity( 0.65 + ($i * 0.1 ) );
-            }
-        }
-    }
-    &:last-child {
-        li:last-child {
-            border-right: 0;
-            span {
-            }
-        }
-    }
-}

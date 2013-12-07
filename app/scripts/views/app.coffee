@@ -7,6 +7,8 @@ class bcdClock.Views.AppView extends Backbone.View
 
     initialize: ->
         @dotsView = new bcdClock.Views.DotsView
+        @barsView = new bcdClock.Views.BarsView
+
         @standardTimeView = new bcdClock.Views.StandardTimeView
             model: @dotsView.model
 
@@ -21,6 +23,7 @@ class bcdClock.Views.AppView extends Backbone.View
         @$el.append @standardTimeView.render()
 
         @$('.swipe-wrap').append @dotsView.render()
+        @$('.swipe-wrap').append @barsView.render()
 
         @swipe = Swipe(document.getElementById('slider'))
 

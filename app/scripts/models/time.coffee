@@ -26,7 +26,12 @@ class bcdClock.Models.TimeModel extends Backbone.Model
         String("000000" + (+digit)).slice(-@get('padding'))
 
     toBinary: (number) ->
-        _.map number.split(//), (i) =>
+        if @get('padding') == 4
+            digits = number.split(//)
+        else
+            digits = [number]
+
+        _.map digits, (i) =>
             @padDigit((+i).toString(2))
 
     timeOfDay: ->

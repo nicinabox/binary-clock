@@ -1,0 +1,101 @@
+#standard-time {
+    font-size: 36px;
+    font-weight: 300;
+    padding: 20px;
+    color: #fff;
+    @include opacity(0.4);
+    text-shadow: 0 1px 1px #000;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+
+.layout {
+    @include clearfix;
+    height: 100%;
+}
+
+span {
+    display: block;
+    @include transition(background 500ms ease-out,
+                        box-shadow 500ms ease-out,
+                        -webkit-transform 300ms ease-in);
+}
+
+#dots {
+    ul {
+        li {
+            width: 50%;
+        }
+    }
+    span {
+        height: 25%;
+        @include border-radius(50%);
+        @include scale(1);
+        &.active {
+            @include scale(0.8);
+        }
+    }
+}
+#bars {
+    span {
+        height: 16.666666667%;
+        margin: 2px 0.5px;
+    }
+}
+
+.midnight, .night {
+    span.active {
+        background: $night;
+    }
+}
+.morning {
+    span.active {
+        background: $morning;
+    }
+}
+.afternoon {
+    span.active {
+        background: $afternoon;
+    }
+}
+.evening {
+    span.active {
+        background: $evening;
+    }
+}
+
+.block {
+    float: left;
+    width: 33.333%;
+    height: 100%;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        height: 100%;
+        @include clearfix;
+        li {
+            float: left;
+            width: 100%;
+            height: 100%;
+            border-right: 1px solid #222;
+        }
+    }
+    @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+            span.active {
+                @include opacity( 0.65 + ($i * 0.1 ) );
+            }
+        }
+    }
+    &:last-child {
+        li:last-child {
+            border-right: 0;
+            span {
+            }
+        }
+    }
+}

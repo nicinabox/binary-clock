@@ -1,6 +1,7 @@
 'use strict';
 
 class bcdClock.Views.TimeView extends Backbone.View
+    template: JST['app/scripts/templates/time.hbs']
     className: 'layout'
 
     constructor: ->
