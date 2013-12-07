@@ -17,56 +17,6 @@
     height: 100%;
 }
 
-span {
-    display: block;
-    @include transition(background 500ms ease-out,
-                        box-shadow 500ms ease-out,
-                        -webkit-transform 300ms ease-in);
-}
-
-#dots {
-    ul {
-        li {
-            width: 50%;
-        }
-    }
-    span {
-        height: 25%;
-        @include border-radius(50%);
-        @include scale(1);
-        &.active {
-            @include scale(0.8);
-        }
-    }
-}
-#bars {
-    span {
-        height: 16.666666667%;
-        margin: 2px 0.5px;
-    }
-}
-
-.midnight, .night {
-    span.active {
-        background: $night;
-    }
-}
-.morning {
-    span.active {
-        background: $morning;
-    }
-}
-.afternoon {
-    span.active {
-        background: $afternoon;
-    }
-}
-.evening {
-    span.active {
-        background: $evening;
-    }
-}
-
 .block {
     float: left;
     width: 33.333%;
@@ -98,4 +48,11 @@ span {
             }
         }
     }
+}
+
+span {
+    display: block;
+    @include transition(background 500ms ease-out,
+                        box-shadow 500ms ease-out,
+                        -webkit-transform 300ms ease-in);
 }
