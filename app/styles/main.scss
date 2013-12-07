@@ -19,6 +19,24 @@ body {
     height: 100vh;
 }
 
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  height: 100%;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+.swipe-wrap > div {
+  height: 100%;
+  float:left;
+  width:100%;
+  position: relative;
+}
+
 .layout {
     @include clearfix;
     height: 100%;

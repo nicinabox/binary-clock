@@ -17,8 +17,12 @@ class bcdClock.Views.AppView extends Backbone.View
         @listenTo @dotsView.model, 'change:time_of_day', @setColorForTime
 
     render: ->
+        @$el.html @template()
         @$el.append @standardTimeView.render()
-        @$el.append @dotsView.render()
+
+        @$('.swipe-wrap').append @dotsView.render()
+
+        @swipe = Swipe(document.getElementById('slider'))
 
     setHeight: =>
         @$el.height ($(window).width() * @viewingRatio)
