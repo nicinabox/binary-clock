@@ -1,13 +1,15 @@
-{{#each parts}}
-    <div class="block">
-        <ul>
-            {{#each this}}
-                <li>
-                    {{#each this}}
-                        <span></span>
-                    {{/each}}
-                </li>
-            {{/each}}
-        </ul>
-    </div>
-{{/each}}
+<div id="{{_id}}" class="layout">
+    {{#each parts}}
+        <div class="block">
+            <ul>
+                {{#each this}}
+                    <li>
+                        {{#each this}}
+                            <span></span>
+                        {{/each}}
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/each}}
+</div>

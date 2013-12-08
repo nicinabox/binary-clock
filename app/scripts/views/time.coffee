@@ -2,11 +2,10 @@
 
 class bcdClock.Views.TimeView extends Backbone.View
     template: JST['app/scripts/templates/time.hbs']
-    className: 'layout'
 
-    constructor: ->
-        super
-        @model ||= new bcdClock.Models.TimeModel
+    initialize: (attrs) ->
+        @model = new bcdClock.Models.TimeModel attrs
+
         setInterval @model.currentTime, 1000
         @listenTo @model, 'change', @updateActive
 

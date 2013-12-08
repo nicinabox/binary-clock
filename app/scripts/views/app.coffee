@@ -4,45 +4,43 @@ class bcdClock.Views.AppView extends Backbone.View
     template: JST['app/scripts/templates/app.hbs']
     el: '#root'
     viewingRatio: 4 / 6
+    layouts: [
+        { _id: 'dots' }
+        { _id: 'bars', padding: 6 }
+    ]
+
+    events:
+        'click #position a': 'goToSlide'
 
     initialize: ->
-        @dotsView = new bcdClock.Views.DotsView
-        @barsView = new bcdClock.Views.BarsView
+        @$el.html @template()
+
+        @standardTimeView = new bcdClock.Views.StandardTimeView
+            model: new bcdClock.Models.TimeModel
+
+        @swipeView = new bcdClock.Views.SwipeView
+            layouts: @layouts
 
         @setHeight()
         $(window).resize @setHeight
 
         @setColorForTime()
-        @listenTo @dotsView.model, 'change:time_of_day', @setColorForTime
+        @listenTo @standardTimeView.model, 'change:time_of_day', @setColorForTime
 
     render: ->
-        @$el.html @template()
-
-        @standardTimeView()
-
-        @$('.swipe-wrap').append @dotsView.render()
-        @$('.swipe-wrap').append @barsView.render()
-
-        bullets = document.getElementById('position')
-                          .getElementsByTagName('a')
-
-        @swipe = Swipe document.getElementById('slider'),
-            callback: (pos) ->
-              i = bullets.length
-              while (i--)
-                bullets[i].className = ''
-              bullets[pos].className = 'active'
+        @standardTimeView.render()
+        @$el.prepend @swipeView.render()
 
     setHeight: =>
         @$el.height ($(window).width() * @viewingRatio)
 
     setColorForTime: ->
-        className = @dotsView.model.get('time_of_day')
+        className = @standardTimeView.model.get('time_of_day')
         unless $('body').hasClass(className)
             $('body').attr('class', '')
                      .addClass(className)
 
-    standardTimeView: ->
-        @standardTimeView = new bcdClock.Views.StandardTimeView
-            model: @dotsView.model
-        @standardTimeView.render()
+    goToSlide: (e) =>
+        e.preventDefault()
+        index = $(e.target).index()
+        @swipeView.swipe.slide(index)
