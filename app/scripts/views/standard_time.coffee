@@ -5,6 +5,7 @@ class bcdClock.Views.StandardTimeView extends Backbone.View
     el: '#standard-time'
 
     initialize: ->
+        setInterval @model.currentTime, 1000
         @listenTo @model, 'change', @render
 
     render: ->

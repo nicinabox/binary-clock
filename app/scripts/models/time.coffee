@@ -8,7 +8,7 @@ class bcdClock.Models.TimeModel extends Backbone.Model
         parts: []
 
     initialize: ->
-       @currentTime()
+        @currentTime()
 
     currentTime: =>
         now = @now()
