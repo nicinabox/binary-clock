@@ -12,7 +12,21 @@ describe('time', function () {
   });
 
   it('converts a number to binary array', function () {
-    time.toBinaryArray(12) === [ '0001', '0002' ];
+    time.toBinaryArray(12).should.eql([ '0001', '0010' ]);
   });
 
+  it('creates a matrix of current time', function () {
+    var m = moment();
+    m.hours(9);
+    m.minutes(21);
+    m.seconds(48);
+    var arr = [
+      [ [ '0', '0', '0', '0' ], [ '1', '0', '0', '1' ] ],
+      [ [ '0', '0', '1', '0' ], [ '0', '0', '0', '1' ] ],
+      [ [ '0', '1', '0', '0' ], [ '1', '0', '0', '0' ] ]
+    ];
+
+    var parts = time.timeParts(m.format('HH:mm:ss'))
+    parts.should.eql(arr);
+  })
 });

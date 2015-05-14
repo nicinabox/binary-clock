@@ -22,14 +22,17 @@ var time = {
 
   toBinaryArray(number) {
     var digits;
+    digits = ('' + number).split('');
 
-    if (_state.padding === 4) {
-      digits = ('' + number).split('');
-    } else {
-      digits = [number];
-    }
+    return _.map(digits, (i) => this.padDigit((+i).toString(2)));
+  },
 
-    return _.map(digits, (i) => this.padDigit(+i).toString(2));
+  timeParts(time) {
+    return _.map(time.split(':'), (number) => {
+      return _.map(this.toBinaryArray(number), (n) => {
+        return n.split('');
+      });
+    });
   },
 
   timeOfDay() {
