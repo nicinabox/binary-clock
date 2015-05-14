@@ -1,10 +1,11 @@
 var React = require('react');
+var Clock = require('./Clock');
 
 var App = React.createClass({
   render() {
     return (
       <div>
-        Hello
+        <Clock />
       </div>
     );
   }

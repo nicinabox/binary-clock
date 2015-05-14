@@ -1,0 +1,20 @@
+.midnight, .night {
+  span.active {
+    background: $night;
+  }
+}
+.morning {
+  span.active {
+    background: $morning;
+  }
+}
+.afternoon {
+  span.active {
+    background: $afternoon;
+  }
+}
+.evening {
+  span.active {
+    background: $evening;
+  }
+}
