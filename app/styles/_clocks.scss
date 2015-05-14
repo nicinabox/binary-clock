@@ -1,8 +1,11 @@
 .clock {
-  font-family: monospace;
-  font-size: 20px;
-  line-height: 1.6;
-  color: #fff;
+  .time {
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+.clock-container {
   display: flex;
 
   .time-segment {
@@ -27,44 +30,11 @@
   span {
     display: block;
     text-align: center;
+    visibility: hidden;
+
+    &.active {
+      visibility: visible;
+    }
   }
 }
 
-// #dots {
-//   ul {
-//     li {
-//       width: 50%;
-//     }
-//   }
-
-//   span {
-//     height: 25%;
-//     border-radius: 100%;
-//     transform: scale(1);
-
-//     &.active {
-//       transform: scale(0.8);
-//     }
-//   }
-// }
-
-// #bars {
-//   li {
-//     -webkit-perspective: 1000px;
-//   }
-
-//   span {
-//     height: 16.666666667%;
-//     margin: 2px 0.5px;
-//     -webkit-transform-style: preserve-3d;
-//     -webkit-transform-origin: 50% 100%;
-//     -webkit-transform: rotateX( 90deg );
-
-//     // @include transition(background 500ms ease-out,
-//     //   -webkit-transform 300ms ease-in);
-
-//     &.active {
-//       -webkit-transform: rotateX( 0deg );
-//     }
-//   }
-// }

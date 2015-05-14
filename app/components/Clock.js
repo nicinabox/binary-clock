@@ -28,21 +28,25 @@ var Clock = React.createClass({
     clearInterval(this._timer);
   },
 
-  _renderTimeSegment(segment, i) {
+  _renderTimeDigit(segment, i) {
     return (
       <li key={i}>
-        {segment.map((numbers, i) => {
-          return <span key={i}>{numbers}</span>
+        {segment.map((number, i) => {
+          return (
+            <span key={i} className={+number ? 'active' : ''}>
+              {number}
+            </span>
+          );
         })}
       </li>
     );
   },
 
-  _renderTime(time, i) {
+  _renderTimeSegment(time, i) {
     return (
       <div key={i} className="time-segment">
         <ul>
-          {time.map(this._renderTimeSegment)}
+          {time.map(this._renderTimeDigit)}
         </ul>
       </div>
     );
@@ -50,9 +54,9 @@ var Clock = React.createClass({
 
   render() {
     return (
-      <div>
-        <div className="clock">
-          {this.state.parts.map(this._renderTime)}
+      <div className="clock">
+        <div className="clock-container">
+          {this.state.parts.map(this._renderTimeSegment)}
         </div>
 
         <div className="time">
