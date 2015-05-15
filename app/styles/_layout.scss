@@ -1,14 +1,18 @@
 body {
-  background: black;
   -webkit-font-smoothing: antialiased;
+  background: black;
   font-family: Monaco, monospace;
   font-size: 20px;
   line-height: 1.6;
   color: #fff;
+  margin: 0;
 }
 
-#root {
+#app {
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #footer {
