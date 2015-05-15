@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('lodash');
 var moment = require('moment');
 
@@ -17,7 +19,7 @@ var time = {
   },
 
   padDigit(number) {
-    return String("000000" + number).slice(-_state.padding);
+    return String('000000' + number).slice(-_state.padding);
   },
 
   toBinaryArray(number) {
@@ -27,8 +29,8 @@ var time = {
     return _.map(digits, (i) => this.padDigit((+i).toString(2)));
   },
 
-  timeParts(time) {
-    return _.map(time.split(':'), (number) => {
+  timeParts(_time) {
+    return _.map(_time.split(':'), (number) => {
       return _.map(this.toBinaryArray(number), (n) => {
         return n.split('');
       });

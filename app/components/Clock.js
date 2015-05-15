@@ -1,4 +1,5 @@
-var _ = require('lodash');
+'use strict';
+
 var React = require('react');
 var time = require('../utils/time');
 
@@ -19,7 +20,7 @@ var Clock = React.createClass({
       this.setState({
         dotSize: this._calcDotSize()
       });
-    }
+    };
   },
 
   componentDidMount() {
@@ -42,8 +43,7 @@ var Clock = React.createClass({
     var windowHeight = window.innerHeight;
     var windowWidth = window.innerWidth;
 
-    var ratio = windowHeight / windowWidth,
-        maxWidth = windowWidth / 6,
+    var maxWidth = windowWidth / 6,
         maxHeight = windowHeight / 4,
         SCALE = 0.8;
 
@@ -58,9 +58,9 @@ var Clock = React.createClass({
   _renderTimeDigit(segment, i) {
     return (
       <li key={i}>
-        {segment.map((number, i) => {
+        {segment.map((number, _i) => {
           return (
-            <span key={i}
+            <span key={_i}
               style={styles.dot(this.state.dotSize)}
               className={+number ? 'active' : ''}></span>
           );
@@ -69,11 +69,11 @@ var Clock = React.createClass({
     );
   },
 
-  _renderTimeSegment(time, i) {
+  _renderTimeSegment(_time, i) {
     return (
       <div key={i} className="time-segment">
         <ul>
-          {time.map(this._renderTimeDigit)}
+          {_time.map(this._renderTimeDigit)}
         </ul>
       </div>
     );
@@ -103,7 +103,7 @@ var styles = {
       height: size,
       marginTop: size * 0.1,
       marginBottom: size * 0.1,
-    }
+    };
   }
 };
 
