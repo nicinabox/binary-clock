@@ -103,7 +103,7 @@ var styles = {
       height: size,
       marginTop: size * 0.1,
       marginBottom: size * 0.1,
-    };
+    }
   }
 };
 

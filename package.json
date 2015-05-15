@@ -10,8 +10,9 @@
     "webpack": "^1.9.5"
   },
   "scripts": {
-    "start": "nodemon server.js | webpack -wd",
-    "test": "mocha --compilers js:babel/register"
+    "start": "nodemon server.js & webpack -wd",
+    "test": "npm run lint & mocha --compilers js:babel/register",
+    "lint": "eslint app"
   },
   "devDependencies": {
     "babel": "^5.3.2",
