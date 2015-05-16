@@ -24,7 +24,7 @@ var Clock = React.createClass({
   },
 
   componentDidMount() {
-    this._timer = setInterval(() => {
+    var setCurrentTime = () => {
       var currentTime = time.currentTime();
 
       this.setState({
@@ -32,7 +32,11 @@ var Clock = React.createClass({
         timeOfDay: time.timeOfDay(),
         parts: time.timeParts(currentTime),
       });
-    }, 1000);
+
+      requestAnimationFrame(setCurrentTime);
+    };
+
+    setCurrentTime();
   },
 
   componentWillUnmount() {

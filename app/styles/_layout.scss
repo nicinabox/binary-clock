@@ -9,9 +9,12 @@ body {
 }
 
 #app {
-  height: 100vh;
+  height: 90vh;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: space-around;
   justify-content: space-around;
 }
 

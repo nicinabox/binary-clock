@@ -48,7 +48,7 @@ var time = {
       return 'afternoon';
     } else if (hour < 20) {
       return 'evening';
-    } else if (hour < 23) {
+    } else if (hour <= 23) {
       return 'night';
     }
   }

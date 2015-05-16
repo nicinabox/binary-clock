@@ -14,7 +14,9 @@
 }
 
 .clock-container {
+  display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   width: 100vw;
 
@@ -27,7 +29,9 @@
   }
 
   ul {
+    display: -webkit-flex;
     display: flex;
+    -webkit-justify-content: space-around;
     justify-content: space-around;
     list-style: none;
     margin: 0;
@@ -47,7 +51,8 @@
     opacity: 0;
     transition: opacity 300ms ease-out,
                 width 100ms ease-out,
-                height 100ms ease-out;
+                height 100ms ease-out,
+                color 300ms ease-out;
 
     &.active {
       opacity: 1;
