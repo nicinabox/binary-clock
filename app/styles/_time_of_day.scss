@@ -1,3 +1,9 @@
+.muted {
+  span.active {
+    background: $muted;
+  }
+}
+
 .midnight, .night {
   span.active {
     background: $night;

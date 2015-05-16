@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('react');
+var Settings = require('./Settings');
 var time = require('../utils/time');
+var settings = require('../utils/settings');
 
 var Clock = React.createClass({
   getInitialState() {
@@ -12,6 +14,7 @@ var Clock = React.createClass({
       timeOfDay: time.timeOfDay(),
       parts: time.timeParts(currentTime),
       dotSize: this._calcDotSize(),
+      settings: settings.getState(),
     };
   },
 
@@ -84,17 +87,26 @@ var Clock = React.createClass({
   },
 
   render() {
-    var classNames = ['clock', this.state.timeOfDay].join(' ');
+    var classNames = ['clock'];
+
+    if (this.state.settings.useMutedColors) {
+      classNames.push('muted');
+    } else {
+      classNames.push(this.state.timeOfDay);
+    }
 
     return (
-      <div ref="clock" className={classNames}>
+      <div ref="clock" className={classNames.join(' ')}>
+        <Settings />
         <div className="clock-container">
           {this.state.parts.map(this._renderTimeSegment)}
         </div>
 
-        <div className="time">
-          {this.state.currentTime}
-        </div>
+        {this.state.settings.showTime && (
+          <div className="time">
+            {this.state.currentTime}
+          </div>
+        )}
       </div>
     );
   }
