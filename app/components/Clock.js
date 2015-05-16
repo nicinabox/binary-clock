@@ -56,7 +56,7 @@ var Clock = React.createClass({
 
     if (maxWidth * 4 > windowHeight) {
       maxHeight = windowHeight / 4;
-      return maxHeight * SCALE;
+      return maxHeight * 0.75;
     } else {
       return maxWidth * SCALE;
     }
@@ -98,6 +98,7 @@ var Clock = React.createClass({
     return (
       <div ref="clock" className={classNames.join(' ')}>
         <Settings />
+
         <div className="clock-container">
           {this.state.parts.map(this._renderTimeSegment)}
         </div>
