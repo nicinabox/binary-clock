@@ -1,0 +1,16 @@
+.settings {
+  background: #fff;
+  color: #444;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 20px; }
+  .settings label {
+    display: block;
+    cursor: pointer; }
+  .settings input[type=checkbox], .settings input[type=radio] {
+    vertical-align: 1px;
+    margin: 0;
+    margin-right: 5px;
+    padding: 0; }

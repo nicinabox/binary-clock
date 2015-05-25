@@ -1,0 +1,90 @@
+#app {
+  height: 90vh;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  justify-content: space-around; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: black;
+  font-family: "Helvetica Neue";
+  line-height: 1.5;
+  color: #fff;
+  margin: 0; }
+
+.muted span.active {
+  background: #243347; }
+
+.midnight span.active, .night span.active {
+  background: #5B5B95; }
+
+.morning span.active {
+  background: #5EBE8F; }
+
+.afternoon span.active {
+  background: #FEBF0F; }
+
+.evening span.active {
+  background: #E51837; }
+
+.clock .time {
+  text-align: center;
+  padding: 20px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #666;
+  font-family: "Helvetica Neue";
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 1; }
+
+.clock-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  width: 100vw; }
+  .clock-container .time-segment {
+    width: 100%; }
+    .clock-container .time-segment + .time-segment {
+      border-left: 1px solid #333; }
+  .clock-container ul {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .clock-container span {
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin: 5px 0;
+    border-radius: 100%;
+    opacity: 0;
+    transition: opacity 300ms ease-out, width 100ms ease-out, height 100ms ease-out, color 300ms ease-out; }
+    .clock-container span.active {
+      opacity: 1; }
+
+.settings {
+  background: #fff;
+  color: #444;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 20px; }
+  .settings label {
+    display: block;
+    cursor: pointer; }
+  .settings input[type=checkbox], .settings input[type=radio] {
+    vertical-align: 1px;
+    margin: 0;
+    margin-right: 5px;
+    padding: 0; }
