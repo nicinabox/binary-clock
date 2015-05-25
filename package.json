@@ -12,7 +12,9 @@
   "scripts": {
     "start": "nodemon server.js & webpack -wd",
     "test": "npm run lint & mocha --compilers js:babel/register",
-    "lint": "eslint app"
+    "lint": "eslint app",
+    "dist": "mkdir -p dist && cp app/*.html dist/",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
     "babel": "^5.3.2",
